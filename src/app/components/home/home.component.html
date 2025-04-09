@@ -1,0 +1,25 @@
+<app-header></app-header>
+
+<ul class="food-gallery">
+  <li *ngFor="let item of food">
+    <a>
+      <img [src]="item.imageUrl" alt="{{ item.name }}" />
+      <div class="food-info">
+        <div class="title">
+          <h3>{{ item.name }}</h3>
+          <p *ngIf="item.favourite" class="heart">❤️</p>
+        </div>
+
+        <p>Price: ₹{{ item.price }}</p>
+
+        <ngb-rating [(rate)]="item.stars" [readonly]="true" ></ngb-rating>
+
+        <p class="tags">
+          <span *ngFor="let tag of item.tags" class="tag">#{{ tag }}</span>
+        </p>
+      </div>
+    </a>
+  </li>
+</ul>
+
+
