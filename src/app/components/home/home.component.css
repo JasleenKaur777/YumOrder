@@ -5,6 +5,9 @@
   padding: 50px;
   list-style: none;
 }
+p{
+  font-size: 18px;
+}
 
 .food-gallery li {
   background: #fff;
@@ -25,7 +28,7 @@
 }
 
 .food-info {
-  padding: 12px;
+  padding: 10px;
 }
 
 .title {
@@ -38,6 +41,11 @@
   font-size: 18px;
   margin: 0;
   color: red;
+}
+.notheart {
+  font-size: 18px;
+  margin: 0;
+  color: black;
 }
 
 .tags {

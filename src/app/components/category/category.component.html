@@ -1,0 +1,9 @@
+<div class="d-flex flex-wrap justify-content-center gap-3 mt-3">
+  <button
+    *ngFor="let item of category"
+    class="btn btn-outline-secondary"
+    (click)="filterByCategory(item)">
+    {{ item }}
+  </button>
+</div>
+

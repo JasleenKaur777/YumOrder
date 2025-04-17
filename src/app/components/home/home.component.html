@@ -1,18 +1,27 @@
 <app-header></app-header>
-
+<app-search></app-search>
+<app-category></app-category>
 <ul class="food-gallery">
   <li *ngFor="let item of food">
     <a>
       <img [src]="item.imageUrl" alt="{{ item.name }}" />
       <div class="food-info">
         <div class="title">
-          <h3>{{ item.name }}</h3>
-          <p *ngIf="item.favourite" class="heart">❤️</p>
+          <h5>{{ item.name }}</h5>
+          <p *ngIf="item.favourite" class="heart">&hearts;</p>
+          <p *ngIf="!item.favourite" class="notheart">&hearts;</p>
         </div>
 
         <p>Price: ₹{{ item.price }}</p>
 
-        <ngb-rating [(rate)]="item.stars" [readonly]="true" ></ngb-rating>
+        <ngb-rating
+        [rate]="getRoundedRating(item.stars)"
+        [readonly]="true"
+        [title]="'Rating: ' + getFormattedRating(item.stars)">
+      </ngb-rating>
+
+
+
 
         <p class="tags">
           <span *ngFor="let tag of item.tags" class="tag">#{{ tag }}</span>
