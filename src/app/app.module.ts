@@ -10,6 +10,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { SearchComponent } from './components/search/search.component';
 import { CategoryComponent } from './components/category/category.component';
+import { FoodPageComponent } from './components/food-page/food-page.component';
+import { CartPageComponent } from './components/cart-page/cart-page.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { CategoryComponent } from './components/category/category.component';
     HeaderComponent,
     HomeComponent,
     SearchComponent,
-    CategoryComponent
+    CategoryComponent,
+    FoodPageComponent,
+    CartPageComponent
   ],
   imports: [
     BrowserModule,

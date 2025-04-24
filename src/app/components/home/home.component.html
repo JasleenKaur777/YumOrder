@@ -3,7 +3,7 @@
 <app-category></app-category>
 <ul class="food-gallery">
   <li *ngFor="let item of food">
-    <a>
+    <a routerLink="/food/{{item.id}}">
       <img [src]="item.imageUrl" alt="{{ item.name }}" />
       <div class="food-info">
         <div class="title">
