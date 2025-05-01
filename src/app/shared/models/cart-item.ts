@@ -1,12 +1,11 @@
-import{Food} from 'src/app/shared/models/Food';
-export class CartItem {
-  food:Food;
-  quantity:number=0;
-  constructor(food:Food){
-this.food=food;
-  }
-  get price():number{
-    return this.food.price*this.quantity;
-  }
+import { Food } from "./Food";
 
+export class CartItem {
+  quantity: number = 1;
+
+  constructor(public food: Food) {}
+
+  get price(): number {
+    return this.food.price * this.quantity;
+  }
 }

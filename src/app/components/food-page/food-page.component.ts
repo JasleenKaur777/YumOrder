@@ -20,6 +20,7 @@ export class FoodPageComponent {
   ngOnInit(): void {
     const id = this.route.snapshot.params['id'];
     this.food = this.foodService.getAll().find(f => f.id == id)!;
+    console.log(this.food);
   }
   getFormattedRating(rating: number): number {
     return Math.round(rating);
@@ -27,5 +28,7 @@ export class FoodPageComponent {
   addToCart(){
     this.cartService.addToCart(this.food);
     this.router.navigateByUrl("/cart-page")
+    // let value=localStorage.setItem("cart",JSON.stringify(this.cartService.getCart()));
+    // console.log(value);
   }
 }

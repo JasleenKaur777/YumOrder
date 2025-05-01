@@ -1,6 +1,7 @@
 <app-header></app-header>
 <app-search></app-search>
 <app-category></app-category>
+<app-not-found [visible]="!food || food.length<=0" notFoundMessage="Food items not found!" resetLinkTest="Go to Homepage!"></app-not-found>
 <ul class="food-gallery">
   <li *ngFor="let item of food">
     <a routerLink="/food/{{item.id}}">

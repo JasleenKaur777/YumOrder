@@ -15,15 +15,24 @@ export class CartPageComponent {
 
   ngOnInit(): void {
     this.cart = this.cartService.getCart();
+    console.log('Cart object:', this.cart);
+
+
   }
 
   removeItem(id: number): void {
     this.cartService.removeFromCart(id);
     this.cart = this.cartService.getCart(); // Refresh view
   }
-  changeQuantity(cartItem:CartItem,quantityInString:string){
-    const quantity=parseInt(quantityInString);
-    this.cartService.changeQuantity(cartItem.food.id,quantity);
-    this.cart = this.cartService.getCart();
+  changeQuantity(cartItem: CartItem, quantityInString: string) {
+    // this.cartService.updateCartTotals();
+    // this.cartService.saveCart();
+    const quantity = parseInt(quantityInString, 10);
+    this.cartService.changeQuantity(cartItem.food.id, quantity);
+    this.cart = this.cartService.getCart(); // Refresh after update
   }
+  // getTotalPrice(): number {
+  //   return this.cart.items.reduce((total, item) => total + item.food.price * item.quantity, 0);
+  // }
+
 }

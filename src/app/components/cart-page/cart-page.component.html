@@ -1,7 +1,8 @@
 <app-header></app-header>
-<div class="container py-4">
+<app-not-found [visible]="!cart || cart.items.length<=0" notFoundMessage="Items not found!" resetLinkTest="Go to Homepage!"></app-not-found>
+<div *ngIf="cart && cart.items.length>0" class="container py-4">
   <h2 class="mb-4">Shopping Cart</h2>
-  <div *ngIf="cart.items.length; ">
+  <div *ngIf="cart.items.length">
     <div class="table-responsive">
       <table class="table table-bordered align-middle">
         <thead>
@@ -16,17 +17,13 @@
         <tbody>
           <tr *ngFor="let item of cart.items">
             <td><img [src]="item.food.imageUrl" height="60" class="rounded" [alt]="item.food.name" /></td>
-            <td routerLink="/food/{{item.food.id}}" >{{ item.food.name }}</td>
+            <td routerLink="/food/{{item.food.id}}">{{ item.food.name }}</td>
             <td>
-              <select #quantitySelect name="" id="quantitySelect" (change)="changeQuantity(item,quantitySelect.value)">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
+              <select #quantitySelect (change)="changeQuantity(item, quantitySelect.value)">
+                <option *ngFor="let q of [1,2,3,4,5]" [value]="q" [selected]="q === item.quantity">{{ q }}</option>
               </select>
             </td>
-            <td>{{ item.price }}</td>
+            <td>{{ item.food.price| number: '1.2-2' }}</td>
             <td>
               <button class="btn btn-danger btn-sm" (click)="removeItem(item.food.id)">Remove</button>
             </td>
@@ -34,10 +31,20 @@
         </tbody>
       </table>
     </div>
-    <div class="text-end">
-      <h4>Total: ₹{{ cart.totalPrice }}</h4>
+    <div class="text-end mt-3">
+      <h4>Total Products: {{ cart.totalCount }}</h4>
+      <h4>Total: ₹{{ cart.totalPrice | number: '1.2-2' }}</h4>
     </div>
+    <div class="text-center mt-4">
+      <a routerLink="/checkout" class="btn btn-success btn-lg px-4">
+        Proceed to Checkout
+      </a>
+    </div>
+
   </div>
+
+
+
 
 
 </div>
